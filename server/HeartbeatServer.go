@@ -7,10 +7,10 @@ import (
 	"log"
 	"net"
 
-	pb "grpcHeratbeat/api"
+	pb "grpcHeratbeat/services"
 )
 
-//go:generate protoc -I ../api/ ../api/heartbeat.proto --go_out=plugins=grpc:../api
+//go:generate protoc -I ../services/ ../services/heartbeat.proto --go_out=plugins=grpc:../services
 
 const (
 	port = ":25000"
@@ -25,7 +25,7 @@ func (s *server) GetHeartbeat(ctx context.Context, in *pb.Empty) (*pb.HeartbeatM
 	return &pb.HeartbeatMsg{ServiceName: "sample1", Timestamp: 1544823909, IsRunning: true, Message: "500 OK"}, nil
 }
 
-// Run the gRPC server
+// Runs the gRPC server
 func main() {
 	// open the port and start listening to it
 	lis, err := net.Listen("tcp", port)

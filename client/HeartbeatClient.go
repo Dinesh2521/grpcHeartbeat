@@ -6,13 +6,14 @@ import (
 	"log"
 	"time"
 
-	pb "grpcHeratbeat/api"
+	pb "grpcHeratbeat/services"
 )
 
 const (
 	address = "localhost:25000"
 )
 
+// a simple grpc client to connect to the GRPC server for heartbeat
 func main() {
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(address, grpc.WithInsecure())

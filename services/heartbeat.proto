@@ -1,5 +1,5 @@
 syntax="proto3";
-package api;
+package services;
 
 // proto spec for the heartbeat
 message HeartbeatMsg {
